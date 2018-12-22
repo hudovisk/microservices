@@ -1,0 +1,22 @@
+{
+  "name": "@app/api-gateway",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon dist/index.js \"",
+    "build": "tsc",
+    "build:docker": "yarn build && docker build -t api-gateway ../../"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/node": "^10.12.15",
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.9",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
