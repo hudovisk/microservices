@@ -1,0 +1,23 @@
+{
+  "name": "@app/common",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "concurrently \"tsc -w\" \"nodemon dist/index.js \"",
+    "build": "tsc"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^10.12.15",
+    "@types/pg": "^7.4.11",
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.9",
+    "tslint": "^5.12.0",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "pg": "^7.7.1"
+  }
+}
