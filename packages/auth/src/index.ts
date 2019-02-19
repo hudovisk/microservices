@@ -1,10 +1,10 @@
-import { Db } from "@app/common";
+import { PgDb } from "@app/common";
 import express from "express";
 import OAuth2Server from "oauth2-server";
 
 import UserModel from "./user";
 
-const db = new Db();
+const db = new PgDb();
 const model = new UserModel(db);
 
 const oauth = new OAuth2Server({

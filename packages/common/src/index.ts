@@ -1,2 +1,2 @@
-export { default as Db } from "./db";
+export { default as PgDb } from "./pg-db";
 export * from "./types";

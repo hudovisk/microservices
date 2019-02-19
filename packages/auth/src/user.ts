@@ -9,7 +9,7 @@ export default class User implements Oauth2Server.PasswordModel {
   }
 
   public async getUser(username: string, password: string): Promise<Oauth2Server.User | null> {
-    const result = await this.db.query("SELECT id FROM users WHERE username = $1 AND password = $2", [
+    const result = await this.db.query("SELECT id FROM users WHERE username = ? AND password = ?", [
       username,
       password
     ]);
@@ -23,7 +23,7 @@ export default class User implements Oauth2Server.PasswordModel {
 
   public async getClient(clientId: string, clientSecret: string): Promise<Oauth2Server.Client | null> {
     const result = await this.db.query(
-      "SELECT client_id, client_secret, redirect_uri FROM oauth_clients WHERE client_id = $1 AND client_secret = $2",
+      "SELECT client_id, client_secret, redirect_uri FROM oauth_clients WHERE client_id = ? AND client_secret = ?",
       [clientId, clientSecret]
     );
 
@@ -45,7 +45,7 @@ export default class User implements Oauth2Server.PasswordModel {
     user: Oauth2Server.User
   ): Promise<Oauth2Server.Token | null> {
     const result = await this.db.query(
-      "INSERT INTO oauth_tokens(access_token, access_token_expires_on, client_id, refresh_token, refresh_token_expires_on, user_id) VALUES ($1, $2, $3, $4)",
+      "INSERT INTO oauth_tokens(access_token, access_token_expires_on, client_id, refresh_token, refresh_token_expires_on, user_id) VALUES (?, ?, ?, ?)",
       [
         token.accessToken,
         token.accessTokenExpiresOn,
@@ -61,7 +61,7 @@ export default class User implements Oauth2Server.PasswordModel {
 
   public async getAccessToken(accessToken: string): Promise<Oauth2Server.Token | null> {
     const result = await this.db.query(
-      "SELECT access_token, access_token_expires_on, client_id, refresh_token, refresh_token_expires_on, user_id FROM oauth_tokens WHERE access_token = $1",
+      "SELECT access_token, access_token_expires_on, client_id, refresh_token, refresh_token_expires_on, user_id FROM oauth_tokens WHERE access_token = ?",
       [accessToken]
     );
 
